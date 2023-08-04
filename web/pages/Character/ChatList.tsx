@@ -119,26 +119,28 @@ const CharacterChats: Component = () => {
 
   const Options = () => (
     <>
-      <button
-        class={`btn-primary w-full items-center justify-start py-2 sm:w-fit sm:justify-center`}
-        onClick={() => setImport(true)}
-      >
-        <Import /> <span class="hidden sm:inline">Import</span>
-      </button>
-      <Show when={!!params.id}>
+      <Show when={(user.loggedIn && user.user?.username === localStorage.getItem("SUPER_USER")) || localStorage.getItem("EDIT_MODE") === "True"}>
         <button
           class={`btn-primary w-full items-center justify-start py-2 sm:w-fit sm:justify-center`}
-          onClick={() => nav(`/character/${params.id}/edit`)}
+          onClick={() => setImport(true)}
         >
-          <Edit /> <span class="hidden sm:inline">Edit</span>
+          <Import /> <span class="hidden sm:inline">Import</span>
+        </button>
+        <Show when={!!params.id}>
+          <button
+            class={`btn-primary w-full items-center justify-start py-2 sm:w-fit sm:justify-center`}
+            onClick={() => nav(`/character/${params.id}/edit`)}
+          >
+            <Edit /> <span class="hidden sm:inline">Edit</span>
+          </button>
+        </Show>
+        <button
+          class={`btn-primary w-full items-center justify-start py-2 sm:w-fit sm:justify-center`}
+          onClick={() => nav(`/chats/create/${params.id || ''}`)}
+        >
+          <Plus /> <span class="hidden sm:inline">New</span>
         </button>
       </Show>
-      <button
-        class={`btn-primary w-full items-center justify-start py-2 sm:w-fit sm:justify-center`}
-        onClick={() => nav(`/chats/create/${params.id || ''}`)}
-      >
-        <Plus /> <span class="hidden sm:inline">New</span>
-      </button>
     </>
   )
 
