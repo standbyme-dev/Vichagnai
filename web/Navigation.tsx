@@ -51,9 +51,9 @@ const MobileNavHeader = () => (
     <div class="w-8"></div>
     <div>
       {' '}
-      <span class="w-full text-center text-[1rem]">
+      {/* <span class="w-full text-center text-[1rem]">
         Agn<span class="text-[var(--hl-500)]">ai</span>stic
-      </span>
+      </span> */}
     </div>
     <div class="w-8">
       <div class="icon-button">
@@ -108,9 +108,9 @@ const Navigation: Component = () => {
           <div ref={content} class="drawer__content sm:text-md text-md flex flex-col gap-0  sm:gap-1">
             <div class="hidden w-full items-center justify-center sm:flex">
               <A href="/">
-                <div class="h-8 w-fit items-center justify-center rounded-lg font-bold">
+                {/* <div class="h-8 w-fit items-center justify-center rounded-lg font-bold">
                   Agn<span class="text-[var(--hl-500)]">ai</span>stic
-                </div>
+                </div> */}
               </A>
             </div>
 

@@ -35,9 +35,9 @@ const NavBar: Component = () => {
 
   const Title = (
     <A href="/">
-      <div class="flex w-full justify-center">
+      {/* <div class="flex w-full justify-center">
         Agn<span class="text-[var(--hl-500)]">ai</span>stic
-      </div>
+      </div> */}
     </A>
   )
 

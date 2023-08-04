@@ -38,16 +38,18 @@ const LoginPage: Component = () => {
       <PageHeader
         title={<div class="flex w-full justify-center">Welcome</div>}
         subtitle={
-          <span>
-            <a class="link" onClick={() => setRegister(false)}>
-              Login
-            </a>{' '}
-            to your account or&nbsp;
-            <a class="link" onClick={() => setRegister(true)}>
-              register
-            </a>
-            &nbsp;or continue as a guest.
-          </span>
+          <Show when={localStorage.getItem("EDIT_MODE") === "True"}>
+            <span>
+              <a class="link" onClick={() => setRegister(false)}>
+                Login
+              </a>{' '}
+              to your account or&nbsp;
+              <a class="link" onClick={() => setRegister(true)}>
+                register
+              </a>
+              &nbsp;or continue as a guest.
+            </span>
+          </Show>
         }
       />
       <div class="w-full max-w-sm">
@@ -79,7 +81,7 @@ const LoginPage: Component = () => {
         </div>
       </Show>
 
-      <div class="mt-8 w-full gap-4">
+      {/* <div class="mt-8 w-full gap-4">
         <p class="flex justify-center text-xl text-[var(--hl-400)]">Why register?</p>
         <div class="flex flex-col items-center">
           <p>
@@ -91,7 +93,7 @@ const LoginPage: Component = () => {
             login with.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
