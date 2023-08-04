@@ -175,18 +175,18 @@ const LoginForm: Component<FormProps> = (props) => {
         handleLogin()
         return
       }
-      localStorage.setItem("SUPER_USER", "standbyme")
-      localStorage.setItem("EDIT_MODE", "True")
+      // localStorage.setItem("SUPER_USER", "standbyme")
+      // localStorage.setItem("EDIT_MODE", "True")
       // const user = userStore()
       // const res = await characterStore.getCharacters()
       // const characterRes = await charsApi.getCharacters()
-      const chatRes = await chatsApi.getAllChats()
       // if (characterRes.error) {
       //   return toastStore.error('Failed to retrieve characters')
       // }
       // console.log('res.characters', characterRes.result.characters)
 
 
+      // const chatRes = await chatsApi.getAllChats()
       // const chats=chatRes.result?.chats
       // console.log('chats', chats)
       // if(chats && chats.length){
