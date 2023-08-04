@@ -59,7 +59,7 @@ const NavBar: Component = () => {
     <Show when={!cfg.fullscreen}>
       <span
         data-header=""
-        class={`bg-900 flex h-[0px] justify-between gap-4 border-b-2 border-[var(--bg-800)] px-4 py-3 max-sm:p-1 sm:hidden`}
+        class={location.pathname.includes('/chat/')?`bg-900 flex h-[48px] justify-between gap-4 border-b-2 border-[var(--bg-800)] px-4 py-3 max-sm:p-1 sm:hidden`:`bg-900 flex h-[0px] justify-between gap-4 border-b-2 border-[var(--bg-800)] px-4 py-3 max-sm:p-1 sm:hidden`}
       >
         <span class="mx-auto flex w-full max-w-5xl items-center justify-between gap-2 font-semibold sm:justify-start">
           {/* <div class={`w-8 sm:hidden`} onClick={settingStore.menu}>

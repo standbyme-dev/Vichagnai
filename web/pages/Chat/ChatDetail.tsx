@@ -16,7 +16,7 @@ import ChatExport from './ChatExport'
 import { ADAPTER_LABELS } from '../../../common/adapters'
 import Button from '../../shared/Button'
 import { CharacterPill } from '../../shared/CharacterPill'
-import { getMaxChatWidth, setComponentPageTitle } from '../../shared/util'
+import { getAssetUrl, getMaxChatWidth, setComponentPageTitle } from '../../shared/util'
 import { characterStore, ChatRightPane, chatStore, settingStore, userStore } from '../../store'
 import { msgStore } from '../../store'
 import InputBar from './components/InputBar'
@@ -137,6 +137,7 @@ const ChatDetail: Component = () => {
     const messages = msgs.msgs
     if (!chats.chat || !chats.char) return []
     const doShowHiddenEvents = showHiddenEvents()
+    // msgStore.loadImage()
     return insertImageMessages(messages, msgs.images[params.id]).filter((msg) => {
       if (chats.opts.hideOoc && msg.ooc) return false
       if (msg.event === 'hidden' && !doShowHiddenEvents) return false
@@ -269,6 +270,7 @@ const ChatDetail: Component = () => {
       const allGreetings = [botGreeting(), ...altGreetings()].filter((text) => !!text)
       const currentChoiceIndex = allGreetings.findIndex((greeting) => greeting === currentChoice)
       const greetingsWithCurrentChoiceFirst = cycleArray(allGreetings, currentChoiceIndex)
+      msgStore.loadImage()
       msgStore.setGreetingSwipes(msgs.msgs[0]._id, greetingsWithCurrentChoiceFirst)
     }
   })
@@ -390,7 +392,8 @@ const ChatDetail: Component = () => {
                   </div>
                 </A>
               </Show>
-
+{/* <img src="/assets/char-6eae030e-e194-4a22-b65b-82095aec71c9.png"></img> */}
+{/* <img src={getAssetUrl("char-"+chats.char?._id+".png")}></img> */}
               <Show when={localStorage.getItem("EDIT_MODE") === "True"}>
                 <div class="flex flex-row gap-3">
                   <Show when={isOwner()}>
@@ -494,6 +497,9 @@ const ChatDetail: Component = () => {
                     </Show>
                     {/* Original Slot location */}
                     <InfiniteScroll />
+                    <center>
+                      <img src={getAssetUrl("char-"+chats.char?._id+".png")} width="60%" height="60%"></img>
+                    </center>
                     <For each={chatMsgs()}>
                       {(msg, i) => (
                         <Message

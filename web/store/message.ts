@@ -412,6 +412,11 @@ export const msgStore = createStore<MsgState>(
         toastStore.error(`Failed to request image: ${res.error}`)
       }
     },
+    async *loadImage({ activeChatId, activeCharId }) {
+      // <img src={getAssetUrl("char-"+chats.char?._id+".png")}></img>
+      const image = getAssetUrl(`char-${activeCharId}.png`)
+      handleImage(activeChatId, image)
+    },
     generateActions() {
       msgsApi.generateActions()
     },
