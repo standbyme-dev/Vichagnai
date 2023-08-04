@@ -374,7 +374,8 @@ const ChatDetail: Component = () => {
               <Show when={isOwner()}>
                 <A
                   class="ellipsis flex max-w-full flex-row items-center justify-between gap-4 text-lg font-bold"
-                  href={`/character/${chats.char?._id}/chats`}
+                  // href={`/character/${chats.char?._id}/chats`}
+                  href={`/chats`}
                 >
                   <ChevronLeft />
                   <div class="ellipsis flex flex-col">

@@ -58,7 +58,7 @@ const App: Component = () => {
           <Route path="/chats" component={CharacterChats} />
           <Route path="/chat" component={ChatDetail} />
           <Route path="/chat/:id" component={ChatDetail} />
-          <Route path={['/info', '/']} component={LoginPage} />
+          <Route path={['/info', '/']} component={CharacterChats} />
           <Route path="/changelog" component={ChangeLog} />
           <Route path="/presets/:id" component={lazy(() => import('./pages/GenerationPresets'))} />
           <Route
