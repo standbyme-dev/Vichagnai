@@ -372,11 +372,11 @@ const ChatDetail: Component = () => {
               style={headerBg()}
             >
               <Show when={isOwner()}>
-                <A
-                  class="ellipsis flex max-w-full cursor-pointer flex-row items-center justify-between gap-4 text-lg font-bold"
-                  href={`/character/${chats.char?._id}/chats`}
+                <div
+                  class="ellipsis flex max-w-full flex-row items-center justify-between gap-4 text-lg font-bold"
+                  // href={`/character/${chats.char?._id}/chats`}
                 >
-                  <ChevronLeft />
+                  {/* <ChevronLeft /> */}
                   <div class="ellipsis flex flex-col">
                     <span class="overflow-hidden text-ellipsis whitespace-nowrap leading-5">
                       {chats.char?.name}
@@ -387,10 +387,10 @@ const ChatDetail: Component = () => {
                       </span>
                     </Show>
                   </div>
-                </A>
+                </div>
               </Show>
 
-              <div class="flex flex-row gap-3">
+              {/* <div class="flex flex-row gap-3">
                 <Show when={isOwner()}>
                   <div class="hidden items-center text-xs italic text-[var(--text-500)] sm:flex">
                     {adapterLabel()}
@@ -425,7 +425,7 @@ const ChatDetail: Component = () => {
                     <ArrowDownLeft />
                   </div>
                 </Show>
-              </div>
+              </div> */}
             </header>
 
             <section

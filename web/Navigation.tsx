@@ -1,4 +1,4 @@
-import { A } from '@solidjs/router'
+import { A, BeforeLeaveEventArgs, useBeforeLeave, useNavigate } from '@solidjs/router'
 import {
   Activity,
   Bell,
@@ -100,30 +100,32 @@ const Navigation: Component = () => {
 
   return (
     <>
-      <div
-        ref={parent}
-        class={`drawer bg-800 flex flex-col gap-2 px-2 pt-2 ${hide()} ${fullscreen()}`}
-      >
-        <div ref={content} class="drawer__content sm:text-md text-md flex flex-col gap-0  sm:gap-1">
-          <div class="hidden w-full items-center justify-center sm:flex">
-            <A href="/">
-              <div class="h-8 w-fit items-center justify-center rounded-lg font-bold">
-                Agn<span class="text-[var(--hl-500)]">ai</span>stic
-              </div>
-            </A>
+      <Show when={(user.loggedIn && user.user?.username === localStorage.getItem("SUPER_USER")) || localStorage.getItem("EDIT_MODE") === "True"}>
+        <div
+          ref={parent}
+          class={`drawer bg-800 flex flex-col gap-2 px-2 pt-2 ${hide()} ${fullscreen()}`}
+        >
+          <div ref={content} class="drawer__content sm:text-md text-md flex flex-col gap-0  sm:gap-1">
+            <div class="hidden w-full items-center justify-center sm:flex">
+              <A href="/">
+                <div class="h-8 w-fit items-center justify-center rounded-lg font-bold">
+                  Agn<span class="text-[var(--hl-500)]">ai</span>stic
+                </div>
+              </A>
+            </div>
+
+            <MobileNavHeader />
+
+            <Show when={user.loggedIn} fallback={<GuestNavigation />}>
+              <UserNavigation />
+            </Show>
           </div>
 
-          <MobileNavHeader />
-
-          <Show when={user.loggedIn} fallback={<GuestNavigation />}>
-            <UserNavigation />
-          </Show>
+          <div class="absolute bottom-0 flex h-4 w-full flex-col items-center justify-between px-4">
+            <div class="text-500 mb-1 text-[0.6rem] italic">{state.config.version}</div>
+          </div>
         </div>
-
-        <div class="absolute bottom-0 flex h-4 w-full flex-col items-center justify-between px-4">
-          <div class="text-500 mb-1 text-[0.6rem] italic">{state.config.version}</div>
-        </div>
-      </div>
+      </Show>
     </>
   )
 }
@@ -237,7 +239,8 @@ const GuestNavigation: Component = () => {
         </Item>
       </Show>
 
-      <Show when={menu.guest}>
+      {/* <Show when={menu.guest}> */}
+      <Show when={(user.loggedIn && user.user?.username === localStorage.getItem("SUPER_USER")) || localStorage.getItem("EDIT_MODE") === "True"}>
         <UserProfile />
 
         <CharacterLink />

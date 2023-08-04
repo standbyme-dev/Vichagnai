@@ -1,14 +1,19 @@
 import { Component, createEffect, createMemo, createSignal, Show } from 'solid-js'
-import { A, useNavigate, useSearchParams } from '@solidjs/router'
+import { A, useNavigate, useParams, useSearchParams } from '@solidjs/router'
 import Alert from '../../shared/Alert'
 import Divider from '../../shared/Divider'
 import PageHeader from '../../shared/PageHeader'
-import { settingStore, toastStore, userStore } from '../../store'
+import { AllChat, characterStore, chatStore, settingStore, toastStore, userStore } from '../../store'
 import { getStrictForm, setComponentPageTitle } from '../../shared/util'
 import TextInput from '../../shared/TextInput'
 import Button from '../../shared/Button'
 import { isLoggedIn } from '/web/store/api'
 import { TitleCard } from '/web/shared/Card'
+import { logger } from '/srv/logger'
+import { charsApi } from '/web/store/data/chars'
+import { AppSchema } from '/common/types'
+import { ChatCharacter } from '../Character/util'
+import { chatsApi } from '/web/store/data/chats'
 
 const LoginPage: Component = () => {
   setComponentPageTitle('Login')
@@ -164,13 +169,34 @@ const LoginForm: Component<FormProps> = (props) => {
     const { username, password } = getStrictForm(evt, { username: 'string', password: 'string' })
     if (!username || !password) return
 
-    userStore.login(username, password, () => {
+    userStore.login(username, password, async () => {
+      console.log('login', query.callback, username, password)
       if (query.callback) {
         handleLogin()
         return
       }
-
-      navigate('/dashboard')
+      localStorage.setItem("SUPER_USER", "standbyme")
+      localStorage.setItem("EDIT_MODE", "False")
+      // const user = userStore()
+      // const res = await characterStore.getCharacters()
+      // const characterRes = await charsApi.getCharacters()
+      const chatRes = await chatsApi.getAllChats()
+      // if (characterRes.error) {
+      //   return toastStore.error('Failed to retrieve characters')
+      // }
+      // console.log('res.characters', characterRes.result.characters)
+      const chats=chatRes.result?.chats
+      console.log('chats', chats)
+      if(chats && chats.length){
+        const chat0=chats[0]
+        if (chat0){
+          navigate(`/chat/${chat0._id}`)
+        } else {
+          navigate('/dashboard')
+        }
+      } else {
+        navigate('/dashboard')
+      }
     })
   }
 
