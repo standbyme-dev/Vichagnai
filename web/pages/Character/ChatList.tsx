@@ -1,6 +1,6 @@
 import { A, useNavigate, useParams } from '@solidjs/router'
 import { Component, createEffect, createMemo, createSignal, For, onMount, Show } from 'solid-js'
-import { AllChat, characterStore, chatStore } from '../../store'
+import { AllChat, characterStore, chatStore, userStore } from '../../store'
 import PageHeader from '../../shared/PageHeader'
 import { Edit, Import, Plus, Trash, SortAsc, SortDesc } from 'lucide-solid'
 import ImportChatModal from './ImportChat'
@@ -34,6 +34,12 @@ const sortOptions = [
 
 const CharacterChats: Component = () => {
   const params = useParams()
+  const navigate = useNavigate()
+  const user = userStore()
+  if (!user.loggedIn) {
+    navigate('/login')
+    return
+  }
   const cache = getListCache()
   const chars = characterStore((s) => ({
     list: s.characters.list,

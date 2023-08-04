@@ -176,7 +176,7 @@ const LoginForm: Component<FormProps> = (props) => {
         return
       }
       localStorage.setItem("SUPER_USER", "standbyme")
-      localStorage.setItem("EDIT_MODE", "False")
+      localStorage.setItem("EDIT_MODE", "True")
       // const user = userStore()
       // const res = await characterStore.getCharacters()
       // const characterRes = await charsApi.getCharacters()
@@ -185,18 +185,21 @@ const LoginForm: Component<FormProps> = (props) => {
       //   return toastStore.error('Failed to retrieve characters')
       // }
       // console.log('res.characters', characterRes.result.characters)
-      const chats=chatRes.result?.chats
-      console.log('chats', chats)
-      if(chats && chats.length){
-        const chat0=chats[0]
-        if (chat0){
-          navigate(`/chat/${chat0._id}`)
-        } else {
-          navigate('/dashboard')
-        }
-      } else {
-        navigate('/dashboard')
-      }
+
+
+      // const chats=chatRes.result?.chats
+      // console.log('chats', chats)
+      // if(chats && chats.length){
+      //   const chat0=chats[0]
+      //   if (chat0){
+      //     navigate(`/chat/${chat0._id}`)
+      //   } else {
+      //     navigate('/dashboard')
+      //   }
+      // } else {
+      //   navigate('/dashboard')
+      // }
+      navigate('/chats')
     })
   }
 
