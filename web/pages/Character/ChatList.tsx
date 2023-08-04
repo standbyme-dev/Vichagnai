@@ -297,9 +297,11 @@ const Chats: Component<{
                         </div>
                       </div>
                     </A>
-                    {/* <div class="flex items-center px-2" onClick={() => setDelete(chat._id)}>
-                      <Trash size={20} class="icon-button" />
-                    </div> */}
+                    <Show when={localStorage.getItem("EDIT_MODE") === "True"}>
+                      <div class="flex items-center px-2" onClick={() => setDelete(chat._id)}>
+                        <Trash size={20} class="icon-button" />
+                      </div>
+                    </Show>
                   </div>
                 )}
               </For>

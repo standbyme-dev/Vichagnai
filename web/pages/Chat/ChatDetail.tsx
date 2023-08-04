@@ -391,42 +391,44 @@ const ChatDetail: Component = () => {
                 </A>
               </Show>
 
-              {/* <div class="flex flex-row gap-3">
-                <Show when={isOwner()}>
-                  <div class="hidden items-center text-xs italic text-[var(--text-500)] sm:flex">
-                    {adapterLabel()}
-                  </div>
-                </Show>
+              <Show when={localStorage.getItem("EDIT_MODE") === "True"}>
+                <div class="flex flex-row gap-3">
+                  <Show when={isOwner()}>
+                    <div class="hidden items-center text-xs italic text-[var(--text-500)] sm:flex">
+                      {adapterLabel()}
+                    </div>
+                  </Show>
 
-                <div class="" onClick={() => setShowOpts(true)}>
-                  <Menu class="icon-button" />
-                  <DropMenu
-                    show={showOpts()}
-                    close={() => setShowOpts(false)}
-                    horz="left"
-                    vert="down"
-                  >
-                    <ChatOptions
-                      adapterLabel={adapterLabel()}
-                      setModal={setModal}
-                      togglePane={togglePane}
+                  <div class="" onClick={() => setShowOpts(true)}>
+                    <Menu class="icon-button" />
+                    <DropMenu
+                      show={showOpts()}
                       close={() => setShowOpts(false)}
-                    />
-                  </DropMenu>
+                      horz="left"
+                      vert="down"
+                    >
+                      <ChatOptions
+                        adapterLabel={adapterLabel()}
+                        setModal={setModal}
+                        togglePane={togglePane}
+                        close={() => setShowOpts(false)}
+                      />
+                    </DropMenu>
+                  </div>
+
+                  <Show when={!cfg.fullscreen}>
+                    <div class="icon-button" onClick={() => settingStore.fullscreen(true)}>
+                      <ArrowUpRight />
+                    </div>
+                  </Show>
+
+                  <Show when={cfg.fullscreen}>
+                    <div class="icon-button" onClick={() => settingStore.fullscreen(false)}>
+                      <ArrowDownLeft />
+                    </div>
+                  </Show>
                 </div>
-
-                <Show when={!cfg.fullscreen}>
-                  <div class="icon-button" onClick={() => settingStore.fullscreen(true)}>
-                    <ArrowUpRight />
-                  </div>
-                </Show>
-
-                <Show when={cfg.fullscreen}>
-                  <div class="icon-button" onClick={() => settingStore.fullscreen(false)}>
-                    <ArrowDownLeft />
-                  </div>
-                </Show>
-              </div> */}
+              </Show>
             </header>
 
             <section

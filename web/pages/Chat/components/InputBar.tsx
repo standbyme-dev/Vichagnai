@@ -139,7 +139,11 @@ const InputBar: Component<{
   }
 
   const onButtonClick = () => {
-    setMenu(true)
+    if (localStorage.getItem("EDIT_MODE") === "True") {
+      setMenu(true)
+    } else {
+      send()
+    }
   }
 
   const setAutoReplyAs = (charId: string) => {
@@ -197,14 +201,17 @@ const InputBar: Component<{
         cleared={cleared}
       /> */}
       <button
-        // onClick={onButtonClick}
-        onClick={send}
+        onClick={onButtonClick}
         class="h-full rounded-l-none rounded-r-md border-l border-[var(--bg-700)] bg-[var(--bg-800)] px-2 py-2 hover:bg-[var(--bg-700)]"
       >
-        Send
-        {/* <MoreHorizontal /> */}
+        <Show when={localStorage.getItem("EDIT_MODE") !== "True"}>
+          Send
+        </Show>
+        <Show when={localStorage.getItem("EDIT_MODE") === "True"}>
+          <MoreHorizontal />
+        </Show>
       </button>
-      {/* <DropMenu show={menu()} close={() => setMenu(false)} vert="up" horz="left">
+      <DropMenu show={menu()} close={() => setMenu(false)} vert="up" horz="left">
         <div class="flex w-48 flex-col gap-2 p-2">
           <Show when={ctx.activeBots.length > 1}>
             <div>Auto-reply</div>
@@ -274,7 +281,7 @@ const InputBar: Component<{
             </Show>
           </Show>
         </div>
-      </DropMenu> */}
+      </DropMenu>
     </div>
   )
 }
