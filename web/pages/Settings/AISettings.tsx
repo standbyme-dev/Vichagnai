@@ -85,7 +85,7 @@ const AISettings: Component<{
               <A class="link" href="/guides/pipeline">
                 Pipeline Guide.
               </A>
-              &nbsp;If available, use local Agnaistic pipeline features (summarization for images).
+              &nbsp;If available, use local Vicha pipeline features (summarization for images).
               This is extremely new and experimental. Expect this to change and improve in the near
               future.
               <span></span>

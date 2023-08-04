@@ -209,7 +209,7 @@ export const userStore = createStore<UserState>(
         jwt: res.result.token,
       }
 
-      toastStore.success('Welcome to Agnaistic')
+      toastStore.success('Welcome to Vicha')
       onSuccess?.()
       publish({ type: 'login', token: res.result.token })
     },

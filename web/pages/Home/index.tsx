@@ -39,7 +39,7 @@ const HomePage: Component = () => {
         <div class="flex text-orange-500">
           <AlertTriangle class="mb-2 mr-2" />
           Your browser does not support local storage. You will need to login/register to use
-          Agnaistic.
+          Vicha.
         </div>
       </Show>
 
@@ -49,7 +49,7 @@ const HomePage: Component = () => {
         </div>
         <Card border>
           <div class="leading-6">
-            <b>Agnaistic</b> is a "bring your own AI" chat service. It is completely open-source and
+            <b>Vicha</b> is a "bring your own AI" chat service. It is completely open-source and
             free to use. You only pay for the third-party AI services that you choose to use. Your
             conversations are completely private and are never shared with anyone unless you invite
             them to your chat.
@@ -112,7 +112,7 @@ const HomePage: Component = () => {
           <div class="flex justify-center text-xl font-bold">Notable Features</div>
           <div class="flex flex-col gap-2 leading-6">
             <p>
-              <b class="highlight">Agnaistic</b> is completely free to use. It is free to register.
+              <b class="highlight">Vicha</b> is completely free to use. It is free to register.
               Your data will be kept private and you can permanently delete your data at any time.
               We take your privacy very seriously.
             </p>

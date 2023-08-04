@@ -20,7 +20,7 @@ const disableJson = flag(
 const debug = flag(`Enable debug logging. This will print payloads sent to the AI`, 'd', 'debug')
 const port = flag(`Choose the port to run the server on. Default: 3001`, 'p', 'port')
 
-const all = flag('Run Agnaistic and the Pipeline API', 'a', 'all')
+const all = flag('Run Vicha and the Pipeline API', 'a', 'all')
 const pipeline = flag('Run the Pipeline API only', 'pipeline')
 const tunnel = flag('Expose your Agnai server using LocalTunnel', 't', 'tunnel')
 

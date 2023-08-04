@@ -29,7 +29,7 @@ This means we can do things like:
 
 ### How do I install and run the Pipeline?
 - You'll need [Node.JS v16+](https://nodejs.org/en/download) and [Python 3.10+](https://www.python.org/downloads/) installed.  
-- Install Agnaistic using the NPM Package. From your terminal: \`npm install agnai -g \`
+- Install Vicha using the NPM Package. From your terminal: \`npm install agnai -g \`
 - Run \`agnai --pipeline\` from your terminal
 
 ### How do I now use the Pipeline?

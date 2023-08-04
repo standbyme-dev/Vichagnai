@@ -174,7 +174,7 @@ const UserNavigation: Component = () => {
         </Item>
 
         <Show when={menu.config.patreon}>
-          <ExternalLink href="https://patreon.com/Agnaistic" newtab>
+          <ExternalLink href="https://patreon.com/Vicha" newtab>
             <HeartHandshake />
           </ExternalLink>
         </Show>
@@ -269,7 +269,7 @@ const GuestNavigation: Component = () => {
         </Item>
 
         <Show when={menu.config.patreon}>
-          <ExternalLink href="https://patreon.com/Agnaistic" newtab>
+          <ExternalLink href="https://patreon.com/Vicha" newtab>
             <HeartHandshake />
           </ExternalLink>
         </Show>

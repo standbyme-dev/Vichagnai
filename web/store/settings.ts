@@ -132,11 +132,11 @@ export const settingStore = createStore<SettingState>(
         const maint = res.result.config?.maintenance
 
         if (!maint && prev.maintenance) {
-          toastStore.success(`Agnaistic is no longer in maintenance mode`, 10)
+          toastStore.success(`Vicha is no longer in maintenance mode`, 10)
         }
 
         if (maint && !prev.maintenance) {
-          toastStore.warn(`Agnaistic is in maintenance mode`, 20)
+          toastStore.warn(`Vicha is in maintenance mode`, 20)
         }
       }
 

@@ -41,7 +41,7 @@ configure(async (opts) => {
     headers: {
       'Content-Type': 'application/json',
       apikey: opts.key || HORDE_GUEST_KEY,
-      'Client-Agent': `Agnaistic:${version}:`,
+      'Client-Agent': `Vicha:${version}:`,
     },
   })
 

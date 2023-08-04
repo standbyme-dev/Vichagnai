@@ -50,14 +50,14 @@ export const DownloadModal: Component<{
   const [fileType, setFileType] = createSignal<string>(props.char?.avatar ? 'png' : 'json')
   const [schema, setSchema] = createSignal(props.char?.persona?.kind || opts()[0].value)
   const outputs = createMemo(() => {
-    // TODO: We don't need to support exporting in Agnaistic format
+    // TODO: We don't need to support exporting in Vicha format
     // once we fully support Chara Card V2. We just need to put
     // Agnai-specific fields in the `extensions` prop.
 
     const base = [{ value: 'tavern', label: 'Tavern' }]
     if (fileType() === 'png') return base
     return base.concat([
-      { value: 'native', label: 'Agnaistic' },
+      { value: 'native', label: 'Vicha' },
       { value: 'ooba', label: 'Textgen' },
     ])
   })
@@ -93,7 +93,7 @@ export const DownloadModal: Component<{
         <div class="flex">
           <Select
             label="Persona Format"
-            helperText="If exporting to Agnaistic format, this does not matter"
+            helperText="If exporting to Vicha format, this does not matter"
             fieldName="format"
             items={opts()}
             value={schema()}
