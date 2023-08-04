@@ -1,4 +1,4 @@
-import { Menu, MoreHorizontal } from 'lucide-solid'
+import { ChevronLeft, Menu, MoreHorizontal } from 'lucide-solid'
 import { Component, Show, createMemo, createSignal } from 'solid-js'
 import { A, useLocation } from '@solidjs/router'
 import { ChatRightPane, chatStore, settingStore } from '../store'
@@ -62,22 +62,31 @@ const NavBar: Component = () => {
         class={`bg-900 flex h-[48px] justify-between gap-4 border-b-2 border-[var(--bg-800)] px-4 py-3 max-sm:p-1 sm:hidden`}
       >
         <span class="mx-auto flex w-full max-w-5xl items-center justify-between gap-2 font-semibold sm:justify-start">
-          <div class={`w-8 sm:hidden`} onClick={settingStore.menu}>
+          {/* <div class={`w-8 sm:hidden`} onClick={settingStore.menu}>
             <Menu class="focusable-icon-button cursor-pointer" size={32} />
-          </div>
+          </div> */}
           <div class="ellipsis flex w-full flex-col">
             <Show when={isChat()} fallback={Title}>
-              <span class="w-full text-center text-[0.6rem]">
+              {/* <span class="w-full text-center text-[0.6rem]">
                 Agn<span class="text-[var(--hl-500)]">ai</span>stic
-              </span>
-              <span class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-center">
+              </span> */}
+              {/* <span class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-center">
                 {chats.loaded ? chats.char?.name : '...'}
-              </span>
+              </span> */}
+              <A
+                class="ellipsis flex max-w-full cursor-pointer flex-row items-center justify-between gap-4 text-lg font-bold"
+                href={`/chats`}
+              >
+                <ChevronLeft />
+                <span class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-center">
+                  {chats.loaded ? chats.char?.name : '...'}
+                </span>
+              </A>
             </Show>
           </div>
           <Show when={isChat()} fallback={<div class="w-8 sm:hidden"></div>}>
             <div class="" onClick={() => setShowOpts(true)}>
-              <MoreHorizontal class="icon-button" />
+              {/* <MoreHorizontal class="icon-button" /> */}
               <DropMenu show={showOpts()} close={() => setShowOpts(false)} horz="left" vert="down">
                 <ChatOptions
                   setModal={setModal}
